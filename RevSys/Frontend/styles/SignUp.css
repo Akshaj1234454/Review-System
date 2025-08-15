@@ -1,0 +1,208 @@
+/* Back button styles */
+.back-button {
+    display: inline-block;
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    color: #fff;
+    font-size: 2.6rem;
+    font-weight: bold;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color 0.18s cubic-bezier(.4,0,.2,1),
+                transform 0.22s cubic-bezier(.4,0,.2,1);
+    z-index: 10;
+    cursor: pointer;
+}
+.back-button:hover, .back-button:focus {
+    color: #ffe066;
+    transform: translateX(-4px) scale(1.18);
+    outline: none;
+}
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.5;
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Main container */
+.signup-container {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 5rem 13rem 5rem;
+    background-color: #000000;
+    min-height: 100vh;
+}
+
+/* Content wrapper */
+.signup-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 491px;
+}
+
+/* Header styles */
+.signup-header {
+    align-self: flex-start;
+}
+
+.signup-title {
+    font-size: 3rem;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+/* Form styles */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-top: 3.5rem;
+    max-width: 100%;
+}
+
+.input-group:first-child {
+    margin-top: 5rem;
+}
+
+.input-field {
+    display: flex;
+    flex-shrink: 0;
+    border-radius: 0.75rem;
+    background-color: #d4d4d8;
+    height: 32px;
+    width: 100%;
+    padding: 0 0.5rem;
+    border: none;
+    color: #000000;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.input-field::placeholder {
+    color: #6b7280;
+}
+
+.input-field:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.1rem;
+    justify-content: space-between;
+    align-self: center;
+    margin-top: 6rem;
+    max-width: 100%;
+    width: 250px;
+}
+
+/* Action buttons */
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+        background-color: #d4d4d8;
+        height: 38px;
+        width: 120px;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-size: 1.08rem;
+    font-weight: 700;
+    color: #18181b;
+    letter-spacing: 0.03em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-shadow: 0 1px 2px rgba(255,255,255,0.15);
+    text-align: center;
+}
+
+.action-btn:hover {
+    background-color: #a1a1aa;
+}
+
+.action-btn:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 5rem 1.25rem 6rem 1.25rem;
+    }
+
+    .signup-title {
+        font-size: 2.25rem;
+    }
+
+    .input-group:first-child {
+        margin-top: 2.5rem;
+    }
+
+    .input-group {
+        margin-top: 2.5rem;
+        max-width: 100%;
+    }
+
+    .action-buttons {
+        margin-top: 2.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .action-btn {
+        width: 100%;
+        max-width: 205px;
+    }
+}
+
+/* Additional responsive breakpoints */
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 3rem 1rem 4rem 1rem;
+    }
+
+    .signup-content {
+        width: 100%;
+    }
+
+    .action-buttons {
+        width: 100%;
+    }
+}

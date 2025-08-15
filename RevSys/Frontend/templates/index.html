@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listings</title>
+    <link rel="stylesheet" href="{% static 'styles/indexStyle.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div style="width:100%;display:flex;justify-content:flex-end;align-items:center;gap:1.2rem;margin-top:1.2rem;margin-bottom:2.5rem;">
+        {% if user.is_authenticated %}
+            <span style="color:#23272f;font-weight:600;font-size:1.1rem;background:#ffe06622;padding:0.3rem 0.9rem;border-radius:6px;">{{ user.username }}</span>
+            <a href="{% url 'LogOut' %}" class="login-btn" style="position:static;">Log Out</a>
+        {% else %}
+            <a href="{% url 'SignUp' %}" class="login-btn" style="position:static;">Sign In / Log In</a>
+        {% endif %}
+    </div>
+    <div class="container">
+        <!-- Main Content Area -->
+        <div class="content-wrapper">
+            <div class="main-content">
+                <!-- Page Title -->
+                <h1 class="page-title">Product listings</h1>
+                
+                <!-- Product Cards Container -->
+                <div class="products-container">
+                {% for product in products %}
+                    <a href="{% url 'reviews' product.id %}" class="products-container">
+                        <div class="product-card">
+                            
+                            <div class="product-image">
+                                <img src="{{ product.picture.url }}" alt="{{ product.name }}">
+                            </div>
+
+                            <div class="rating {% if view_only %}read-only{% endif %}">
+                                <input value="5" name="rating{{ product.id }}" id="star5_{{ product.id }}" type="radio"
+                                    {% if product.avgRating|floatformat:0 == '5' %}checked{% endif %}
+                                    {% if view_only %}disabled{% endif %}>
+                                <label for="star5_{{ product.id }}"></label>
+
+                                <input value="4" name="rating{{ product.id }}" id="star4_{{ product.id }}" type="radio"
+                                    {% if product.avgRating|floatformat:0 == '4' %}checked{% endif %}
+                                    {% if view_only %}disabled{% endif %}>
+                                <label for="star4_{{ product.id }}"></label>
+
+                                <input value="3" name="rating{{ product.id }}" id="star3_{{ product.id }}" type="radio"
+                                    {% if product.avgRating|floatformat:0 == '3' %}checked{% endif %}
+                                    {% if view_only %}disabled{% endif %}>
+                                <label for="star3_{{ product.id }}"></label>
+
+                                <input value="2" name="rating{{ product.id }}" id="star2_{{ product.id }}" type="radio"
+                                    {% if product.avgRating|floatformat:0 == '2' %}checked{% endif %}
+                                    {% if view_only %}disabled{% endif %}>
+                                <label for="star2_{{ product.id }}"></label>
+
+                                <input value="1" name="rating{{ product.id }}" id="star1_{{ product.id }}" type="radio"
+                                    {% if product.avgRating|floatformat:0 == '1' %}checked{% endif %}
+                                    {% if view_only %}disabled{% endif %}>
+                                <label for="star1_{{ product.id }}"></label>
+                            </div>
+
+                            <div class="product-details">
+                                
+                                <h3 class="product-title">{{ product.name }}</h3>
+                                <p class="product-description">{{ product.description }}</p>
+                                    
+                            </div>
+                            
+                        </div>
+                    </a>
+                {% endfor %}
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <script src="{% static 'Scripts/indexScript.js' %}"></script>
+</body>
+</html>

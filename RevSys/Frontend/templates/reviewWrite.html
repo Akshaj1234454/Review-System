@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write a Review</title>
+    <link rel="stylesheet" href="{% static 'styles/reviewWrite.css' %}">
+</head>
+<body>
+
+    <main class="review-container">
+        <a href="{% url 'reviews' product.id %}" class="back-button">←</a>
+        <div class="review-wrapper">
+            <form method="post" class="review-form">
+                {% csrf_token %}
+
+                <div class="form-top">
+                    <h1>Write a review</h1>
+                    {% with selected=form.data.rating|default:'' %}
+                    <div class="rating">
+                        <input value="5" name="rating" id="star5" type="radio" {% if selected == '5' %}checked{% endif %} required>
+                        <label for="star5"></label>
+                        <input value="4" name="rating" id="star4" type="radio" {% if selected == '4' %}checked{% endif %}>
+                        <label for="star4"></label>
+                        <input value="3" name="rating" id="star3" type="radio" {% if selected == '3' %}checked{% endif %}>
+                        <label for="star3"></label>
+                        <input value="2" name="rating" id="star2" type="radio" {% if selected == '2' %}checked{% endif %}>
+                        <label for="star2"></label>
+                        <input value="1" name="rating" id="star1" type="radio" {% if selected == '1' %}checked{% endif %}>
+                        <label for="star1"></label>
+                    </div>
+                    {% endwith %}
+                </div>
+
+                {% if form.rating.errors %}
+                    {% for error in form.rating.errors %}
+                        <div class="alert alert-danger" style="background:#ff4d4f;color:#fff;padding:0.6em 1em;border-radius:6px;margin:0.6rem 0;box-shadow:0 2px 8px #0002;">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="form-group review-text-section">
+                    {{ form.content }}
+                    <button type="submit" class="action-button">Submit Review</button>
+                </div>
+                {% if form.content.errors %}
+                    {% for error in form.content.errors %}
+                        <div class="alert alert-danger" style="background:#ff4d4f;color:#fff;padding:0.6em 1em;border-radius:6px;margin-top:0.6rem;box-shadow:0 2px 8px #0002;">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </form>
+        </div>
+    </main>
+
+
+</body>
+</html>

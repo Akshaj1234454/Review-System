@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/reviews.css' %}">
+</head>
+<body>
+    <style>
+    body {
+        background: #000 !important;
+        margin: 0;
+        padding: 0;
+    }
+    
+    @media (min-width: 768px) {
+        .ai-overview-text {
+            font-size: 18px !important;
+        }
+        .review-card .author span {
+            font-size: 15px !important;
+        }
+        .review-card .remarks span {
+            font-size: 16px !important;
+        }
+    }
+    
+    .write-review:hover {
+        background: #111 !important;
+        border-color: #555 !important;
+    }
+    
+    .back-button:hover {
+        color: #fff !important;
+    }
+    
+    .rating label:before {
+        color: #333 !important;
+    }
+    
+    .rating input:checked ~ label,
+    .rating label:hover,
+    .rating label:hover ~ label {
+        color: #ffd700 !important;
+    }
+    
+    .rating.read-only input:checked ~ label {
+        color: #ffd700 !important;
+    }
+    
+    .rating.read-only label:hover,
+    .rating.read-only label:hover ~ label {
+        color: #333 !important;
+    }
+    </style>
+    <div class="container" style="background-color: #000; min-height: 100vh;">
+        {% if messages %}
+            <div style="max-width:1200px;margin:0 auto;padding:1rem;">
+                {% for message in messages %}
+                    <div class="alert" style="background:#1a5a1a;color:#4ade80;border:1px solid #22c55e;padding:0.7em 1.2em;border-radius:6px;margin-bottom:0.5em;">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!-- Header Section -->
+    <div class="header" style="position:relative;height:300px;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#000;">
+            {% if product.picture %}
+                <img src="{{ product.picture.url }}" alt="{{ product.name }}" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.4);z-index:1;">
+            {% endif %}
+            <span style="position:relative;z-index:2;color:#fff;font-size:3rem;font-weight:300;letter-spacing:2px;text-align:center;">{{ product.name }}</span>
+        </div>
+
+
+        <!-- Main Content Area -->
+        <div class="main-content" style="display: flex; flex-direction: column; align-items: center; max-width: 900px; margin: 0 auto; padding: 3rem 2rem; background: #000;">
+            <a href="{% url 'index' %}" class="back-button" style="position: fixed; top: 2rem; left: 2rem; color: #888; font-size: 2rem; font-weight: 300; text-decoration: none; z-index: 1000; transition: color 0.3s ease;">←</a>
+            
+
+            <!-- AI Overview Section -->
+            <div class="ai-overview-section" style="width: 100%; max-width: 700px; margin: 0 0 3rem 0;">
+                <div class="ai-overview-text" style="color: #ccc; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 300; line-height: 1.6; text-align: left; background: none; padding: 1.5rem; border-left: 2px solid #333; margin-left: 1rem;">
+                    {% if summary %}
+                        {{ summary }}
+                    {% else %}
+                        <em style="color: #666;">AI summary will appear here after reviews are submitted...</em>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <!-- Write Your Review Button -->
+            
+            <div style="width: 100%; max-width: 700px; display: flex; justify-content: flex-end; margin: 0 0 2rem 0;">
+                    <button class="write-review" role="button" onclick="window.location.href='{% url 'reviewWrite' product.id %}'" style="background: none; color: #fff; border: 1px solid #333; padding: 0.7rem 1.5rem; border-radius: 2px; cursor: pointer; font-size: 0.9rem; font-weight: 300; letter-spacing: 0.5px; transition: all 0.3s ease;">Write Review</button>
+            </div>
+
+            <!-- Review Section -->
+
+            <div class="review-section" style="width: 100%; max-width: 700px; display: flex; flex-direction: column; gap: 2.5rem;">
+                {% for review in reviews %}
+                    <div class="review-card" style="background: none; border: none; border-bottom: 1px solid #222; padding: 0 0 2rem 0;">
+                        <div class="author-rating" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <div class="author">
+                                <span style="color: #888; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 300;">{{ review.author }} • {{ review.created_at|date:"M d, Y" }}</span>
+                            </div>
+                            
+                            <div style="color:#ffd700;font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:400;">
+                                {{ review.rating }} star{{ review.rating|pluralize }}
+                            </div>
+                        </div>
+
+                        <!-- Remarks Section -->
+                        <div class="remarks">
+                            <span style="color: #ddd; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 300; line-height: 1.6;">{{ review.content }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Write Your Review Button (moved to the right after reviews) -->
+            
+        </div>
+    </div>
+
+    <script src="{% static 'Scripts/reviewsScript.js' %}"></script>
+</body>
+</html>

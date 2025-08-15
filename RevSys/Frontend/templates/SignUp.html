@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="{% static 'styles/SignUp.css' %}">
+
+</head>
+<body>
+    
+    <main class="signup-container">
+        <section class="signup-content">
+            <header class="signup-header">
+                <h1 class="signup-title">Sign Up</h1>
+            </header>
+            <!--<a href="{% url 'index' %}" class="back-button">←</a>-->
+
+
+            <form class="signup-form" id="signupForm" method="POST">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <ul id="form-error-list" style="display:none;">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="input-group">
+                    {{form.username}}
+                </div>
+
+                <div class="input-group">
+                    {{form.email}}
+                </div>
+
+                <div class="input-group">
+                    {{form.password1}}
+                </div>
+
+                <div class="input-group">
+                    {{form.password2}}
+                </div>
+                <section class="action-buttons">
+                    <button type="submit" class="action-btn" id="actionBtn1">
+                        Sign Up
+                    </button>
+                    <button type="button" class="action-btn" id="actionBtn2" onclick="window.location.href='{% url 'LogIn' %}'">
+                        Log In
+                    </button>
+                </section>
+            </form>
+
+        </section>
+    </main>
+
+
+    <script src="{% static 'Scripts/SignUp.js' %}"></script>
+    <script>
+    // Show Django form errors as alert pop-ups
+    document.addEventListener('DOMContentLoaded', function() {
+        var errorList = document.getElementById('form-error-list');
+        if (errorList) {
+            var errors = errorList.querySelectorAll('li');
+            errors.forEach(function(li) {
+                alert(li.textContent);
+            });
+        }
+    });
+    </script>
+
+</body>
+</html>
+
+                      

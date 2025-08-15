@@ -1,0 +1,316 @@
+
+
+.back-button {
+    display: inline-block;
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    color: #fff;
+    font-size: 2.6rem;
+    font-weight: bold;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color 0.18s cubic-bezier(.4,0,.2,1),
+                transform 0.22s cubic-bezier(.4,0,.2,1);
+    z-index: 10;
+    cursor: pointer;
+}
+.back-button:hover, .back-button:focus {
+    color: #ffe066;
+    transform: translateX(-4px) scale(1.18);
+    outline: none;
+}
+/* Write Your Review button uses login-btn style */
+.login-btn[role="button"] {
+    position: static;
+    left: auto;
+    top: auto;
+    color: #23272f;
+}
+/* Log In button styles */
+.login-btn {
+    text-align: center;
+    transform-origin: center;
+    position: absolute;
+    top: 6.2rem;
+    left: 78rem;
+    padding: 0.3rem 0.7rem;
+    background: none;
+    color: #23272f;
+    border: none;
+    border-radius: 0;
+    font-size: 1.13rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: none;
+    letter-spacing: 0.01em;
+    transition: color 0.18s cubic-bezier(.4,0,.2,1),
+                font-size 0.22s cubic-bezier(.4,0,.2,1),
+                transform 0.22s cubic-bezier(.4,0,.2,1);
+    z-index: 20;
+    cursor: pointer;
+}
+.login-btn:hover, .login-btn:focus {
+    color: #ffe066;
+    font-size: 1.25rem;
+    transform: translateY(-2px);
+    outline: none;
+}
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, Roboto, Helvetica, sans-serif;
+    background-color: #040404;
+    color: white;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    min-height: 100vh;
+    padding: 4rem 1.5rem;
+}
+
+.content-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-content {
+    flex: 1;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 4rem;
+    color: white;
+}
+
+/* Products Container */
+.products-container {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    gap: 2rem;
+}
+
+/* Product Card */
+.product-card {
+    position: relative;
+    width: 100%;
+    background-color: #7F7F7F;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+    height: 207px;
+    transition: transform 0.3s ease;
+}
+.product-card:active {
+    transform: scale(0.98);
+}
+
+.product-image {
+    background-color: #A5A5A5;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    overflow: hidden; /* Ensures image doesn't spill out */
+}
+
+/* Add this */
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px 0 0 20px; /* Matches container */
+}
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+.product-details {
+    flex: 1;
+    padding: 1.5rem 1rem;
+    position: relative;
+}
+
+.star-rating {
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    background-color: #C0BF71;
+    height: 32px;
+    width: 116px;
+}
+.rating {
+    
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    height: 32px;
+    width: 116px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse; /* reverses star order visually */
+    border-radius: 5px;
+    padding: 0 0.5rem;
+    gap: 2px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.rating label:before {
+    content: '\2605';
+    font-size: 30px;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #6f00ff;
+    transition: color 0.3s;
+}
+
+.rating.read-only label {
+    pointer-events: none;  /* disables all hover/clicks */
+    cursor: default;
+}
+
+.rating.read-only input:checked ~ label {
+    color: #6f00ff;
+}
+.rating.read-only label:hover,
+.rating.read-only label:hover ~ label {
+    color: #ccc !important; /* neutral gray color, overrides purple */
+}
+
+.product-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: black;
+    padding-right: 8rem;
+}
+
+.product-description {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: black;
+    margin-top: 1rem;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    .container {
+        padding: 6rem 8rem;
+    }
+    
+    .page-title {
+        font-size: 3rem;
+        margin-bottom: 6rem;
+    }
+    
+    .product-image {
+        width: 377px;
+    }
+    
+    .product-details {
+        padding: 1.5rem;
+    }
+    
+    .star-rating {
+        top: 2rem;
+        right: 1.5rem;
+        width: 207px;
+    }
+    
+    .product-title {
+        font-size: 2.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .product-description {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .scrollbar-placeholder {
+        display: block;
+    }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 1024px) {
+    .page-title {
+        font-size: 3rem;
+    }
+}
+
+/* Extra Large Desktop */
+@media (min-width: 1440px) {
+    .container {
+        padding: 5.625rem 7.75rem;
+    }
+    
+    .page-title {
+        font-size: 3rem;
+    }
+}
+
+/* Mobile Optimization */
+@media (max-width: 767px) {
+    .container {
+        padding: 4.3125rem 2.75rem;
+    }
+    
+    .page-title {
+        font-size: 2.25rem;
+        margin-bottom: 4.625rem;
+    }
+    
+    .product-card {
+        width: 100%;
+    }
+    
+    .product-image {
+        width: 211px;
+    }
+    
+    .star-rating {
+        width: 116px;
+    }
+    
+    .product-title {
+        font-size: 1.5rem;
+    }
+    
+    .product-description {
+        font-size: 1rem;
+    }
+}

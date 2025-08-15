@@ -1,0 +1,389 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main container */
+.container {
+    min-height: 100vh;
+    background-color: #474747;
+}
+
+/* Header Section */
+.header {
+    width: 100%;
+    height: 128px;
+    background-color: #888888;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    position: relative;
+}
+
+.header-title {
+    color: #030303;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 16px;
+}
+
+.write-review[role="button"] {
+    position: static;
+    left: auto;
+    top: auto;
+    color: #ffffff;
+}
+/* Log In button styles */
+.write-review {
+    text-align: center;
+    transform-origin: center;
+    position: absolute;
+    top: 6.2rem;
+    left: 78rem;
+    padding: 0.3rem 0.7rem;
+    background: none;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+    font-size: 1.13rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: none;
+    letter-spacing: 0.01em;
+    transition: color 0.18s cubic-bezier(.4,0,.2,1),
+                font-size 0.22s cubic-bezier(.4,0,.2,1),
+                transform 0.22s cubic-bezier(.4,0,.2,1);
+    z-index: 20;
+    cursor: pointer;
+}
+.write-review:hover, .write-review:focus {
+    color: #ffe066;
+    font-size: 1.25rem;
+    transform: translateY(-2px);
+    outline: none;
+}
+.back-button {
+    display: inline-block;
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    color: #fff;
+    font-size: 2.6rem;
+    font-weight: bold;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color 0.18s cubic-bezier(.4,0,.2,1),
+                transform 0.22s cubic-bezier(.4,0,.2,1);
+    z-index: 10;
+    cursor: pointer;
+}
+.back-button:hover, .back-button:focus {
+    color: #ffe066;
+    transform: translateX(-4px) scale(1.18);
+    outline: none;
+}
+
+/* Main Content Area */
+.main-content {
+    width: 100%;
+    background-color: #1E1E1E;
+    min-height: calc(100vh - 128px);
+    padding: 24px;
+    position: relative;
+}
+
+/* From Uiverse.io by TCdesign-dev */ 
+.button-name {
+    width: 170px;
+    height: 40px;
+    position: absolute;
+    top: 100%;
+    right: 68%;
+  align-items: center;
+  appearance: none;
+  background-color: #fcfcfd;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow:
+    rgba(45, 35, 66, 0.2) 0 2px 4px,
+    rgba(45, 35, 66, 0.15) 0 7px 13px -3px,
+    #d6d6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395a;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    box-shadow 0.15s,
+    transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.button-name:focus {
+  box-shadow:
+    #d6d6e7 0 0 0 1.5px inset,
+    rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
+    #d6d6e7 0 -3px 0 inset;
+}
+
+.button-name:hover {
+  box-shadow:
+    rgba(45, 35, 66, 0.3) 0 4px 8px,
+    rgba(45, 35, 66, 0.2) 0 7px 13px -3px,
+    #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-name:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+
+/* AI Overview Section */
+.ai-overview-section {
+    position: relative;
+    left: 22%;
+    margin-bottom: 24px;
+}
+
+.ai-overview-text {
+    width: 100%;
+    max-width: 404px;
+    height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.ai-overview-text span {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+
+/* Red Placeholder Button */
+.red-placeholder {
+    width: 135px;
+    height: 40px;
+    background-color: #F00;
+    position: absolute;
+    top: 43px;
+    right: 0;
+}
+
+.review-section {
+    width: 100%;
+    max-width: 575px;
+    display: flex;
+    flex-direction: column;
+    gap:150px; /* Adjust space between cards */
+}
+
+/* Review Section */
+.review-section {
+    width: 100%;
+    max-width: 575px;
+    
+}
+
+/* Author and Rating */
+.author-rating {
+    display: flex;
+    margin-bottom: 75px;
+    flex-direction: column;
+    
+}
+
+.author {
+    margin-bottom: 10px;
+}
+
+.author span {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Star Rating Placeholder */
+.star-rating {
+    width: 154px;
+    height: 29px;
+    background-color: #A25353;
+}
+
+.rating {
+    
+    top: 1.5rem;
+    right: 1rem;
+    height: 32px;
+    width: 116px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse; /* reverses star order visually */
+    border-radius: 5px;
+    padding: 0 0.5rem;
+    gap: 2px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.rating label:before {
+    content: '\2605';
+    font-size: 30px;
+}
+
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffd700;
+    transition: color 0.3s;
+}
+
+.rating.read-only label {
+    pointer-events: none;  /* disables all hover/clicks */
+    cursor: default;
+}
+
+.rating.read-only input:checked ~ label {
+    color: #ffd700;
+}
+.rating.read-only label:hover,
+.rating.read-only label:hover ~ label {
+    color: #ccc !important; /* neutral gray color, overrides purple */
+}
+
+/* Remarks Section */
+.remarks span {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+
+/* Desktop styles (768px and up) */
+@media (min-width: 768px) {
+    /* Header */
+    .header {
+        height: 205px;
+        background-color: #9A9A9A;
+        padding: 0 99px;
+    }
+    
+    .header-title {
+        font-size: 48px;
+        margin-top: 0;
+    }
+    
+    /* Main Content */
+    .main-content {
+        background-color: #000;
+        min-height: calc(100vh - 205px);
+        padding: 69px 100px;
+    }
+    
+    /* AI Overview Section */
+    .ai-overview-section {
+        margin-bottom: 238px;
+    }
+    
+    .ai-overview-text {
+        max-width: 688px;
+        height: 169px;
+        margin: 0;
+    }
+    
+    .ai-overview-text span {
+        font-size: 24px;
+    }
+    
+    /* Red Placeholder Button */
+    .red-placeholder {
+        top: 65px;
+        right: 106px;
+    }
+    
+    /* Review Section */
+    .review-section {
+        max-width: 1239px;
+    }
+    
+    /* Author and Rating */
+    .author-rating {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 65px;
+    }
+    
+    .author {
+        margin-bottom: 0;
+    }
+    
+    .author span {
+        font-size: 32px;
+    }
+    
+    /* Star Rating Placeholder */
+    .star-rating {
+        width: 179px;
+        height: 38px;
+        margin-left: auto;
+    }
+    
+    /* Remarks */
+    .remarks span {
+        font-size: 24px;
+    }
+}
+
+/* Large desktop styles (1440px and up) */
+@media (min-width: 1440px) {
+    .container {
+        width: 100%;
+    }
+}
